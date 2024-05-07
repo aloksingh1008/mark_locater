@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Map from './components/Map.js'
+import ExcelDataFetcher from './components/ExcelDataFetcher';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// import mapboxgl from 'mapbox-gl';
 
-export default App;
+const MyComponent = () => {
+    const excelData = ExcelDataFetcher();
+    // console.log(excelData)
+
+
+    const accessToken = 'pk.eyJ1IjoiZXNwYWNlc2VydmljZSIsImEiOiJjbHZ1dHZjdTQwMDhrMm1uMnoxdWRibzQ4In0.NaprcMBbdX07f4eXXdr-lw';
+
+    return (
+        <div>
+            <h1>Mapbox GL JS React App</h1>
+            <Map accessToken={accessToken} ports_location={excelData}/>
+        </div>
+    );
+};
+
+export default MyComponent;
